@@ -48,7 +48,6 @@ export const Description = styled.p`
 export const ButtonContainer = styled.div`
   display: flex;
   height: 3em;
-  flex-direction: column;
   gap: 10px;
   width: 50%;
   justify-content: end;

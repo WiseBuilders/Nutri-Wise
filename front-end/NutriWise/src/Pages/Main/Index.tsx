@@ -16,10 +16,12 @@ const Main =()=>{
                 <Button
                     color='#068713'
                     label='Login'
+                    style={{width:"8em"}}
                 />
                 <Button
                     color='#F97F33'
                     label='Cadastre-se'
+                    style={{width:"8em"}}
                 />
             </ButtonContainer>
         </Container>

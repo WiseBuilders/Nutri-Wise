@@ -1,5 +1,8 @@
 # NutriWise
 
+<p align="center">
+<img src="imagens/nutriwise_logo.png" width="1000">
+</p>
 
 
 - **Sprint 1 Backlog:**

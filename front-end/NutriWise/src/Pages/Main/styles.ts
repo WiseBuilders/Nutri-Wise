@@ -25,7 +25,7 @@ export const Title = styled.h1`
 `;
 
 export const Img = styled.img`
-    margin: 20px 0;
+  margin: 20px 0;
   width: 150px;
   height: auto;
 

@@ -4,6 +4,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     color: string;
 }
 
+interface LabelProps {
+    fontColor: string;
+}
+
 export const Container = styled.button<ButtonProps>`
     display: flex;
     align-items: center;
@@ -26,6 +30,6 @@ export const Container = styled.button<ButtonProps>`
     }
 `;
 
-export const Label = styled.div`
-    color: #ffffff;
+export const Label = styled.div<LabelProps>`
+    color: ${(props) => props.fontColor};
 `

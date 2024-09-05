@@ -3,14 +3,11 @@ import { Container, Label } from "./styles";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     color: string;
     label: string;
+    fontColor: string;
+    handleClick?: ()=> void;
 }
 
-const Button: React.FC<ButtonProps> = ({ color, label, ...rest })=>{
-
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        console.log('Haduken', event)
-    };
-
+const Button: React.FC<ButtonProps> = ({ color, label,handleClick,fontColor, ...rest })=>{
 
     return(
         <Container 
@@ -18,7 +15,10 @@ const Button: React.FC<ButtonProps> = ({ color, label, ...rest })=>{
             onClick={handleClick}
             {...rest}
         >
-            <Label>{label}</Label>
+            <Label
+                fontColor={fontColor}
+            >{label}
+            </Label>
         </Container>
     )
 }

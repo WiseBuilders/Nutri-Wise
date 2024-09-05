@@ -1,8 +1,21 @@
 import Button from "../../components/button/Index";
 import logo from "../../assets/logo.png";
 import { Container,Title, Img, Description,ButtonContainer } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 const Main =()=>{
+
+    const navigate = useNavigate();
+
+    function handleClick(){
+       console.log('Haduken!')
+    }
+
+    function handleClickSignUp(){
+        navigate('/singup')
+    }
+
+
     return(
         <Container>
             <Title>Olá, seja bem-vindo à NutriWise!</Title>
@@ -15,12 +28,16 @@ const Main =()=>{
             <ButtonContainer>
                 <Button
                     color='#068713'
+                    fontColor="#FFFFFF"
                     label='Login'
+                    handleClick={handleClick}
                     style={{width:"8em"}}
                 />
                 <Button
                     color='#F97F33'
+                    fontColor="#FFFFFF"
                     label='Cadastre-se'
+                    handleClick={handleClickSignUp}
                     style={{width:"8em"}}
                 />
             </ButtonContainer>

@@ -16,23 +16,13 @@ import { Container,
 import Button from '../../components/button/Index';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SignInData, useSignIn } from '../../context/SignInContext';
 
-interface FormDataProps {
-    name: String;
-    birthdate: String;
-    gender: String;
-    weight: String;
-    height: String;
-    email: String
-    password: string;
-    question1: String;
-    question2: String;
-    question3: String;
-}
 
 const SignUp = ()=>{
     const [switchForm, setSwitchForm] = useState(false);
-    const [formData, setFormData] = useState<FormDataProps>();
+
+    const {getSignInData, sigInDataStatus} = useSignIn();
     
     const navigate = useNavigate();
 
@@ -46,7 +36,7 @@ const SignUp = ()=>{
             .required('O gênero é obrigatório'),
         weight: Yup.number()
             .typeError('Peso deve ser em número')
-            .required('A altura é obrigatório'),
+            .required('A peso é obrigatório'),
         height: Yup.number()
             .typeError('Altura deve ser número')
             .required('A altura é obrigatório'),
@@ -65,20 +55,25 @@ const SignUp = ()=>{
         setSwitchForm(true);
     }
 
-    function handleClick({birthdate,email,gender,height,name,password,question1,question2,question3,weight}: FormDataProps){
-        setFormData({
-            birthdate,
-            email,
-            gender,
-            height,
-            name,
-            password,
-            question1,
-            question2,
-            question3,
-            weight
-        });
-        navigate('/')
+    function handleClick({birthdate,email,gender,height,name,password,question1,question2,question3,weight}: SignInData){
+        if(sigInDataStatus){
+            getSignInData({
+                birthdate,
+                email,
+                gender,
+                height,
+                name,
+                password,
+                question1,
+                question2,
+                question3,
+                weight
+            });
+            navigate('/')
+        } else{
+            alert('UsuarioJa cadastrado');
+            setSwitchForm(false);
+        }
     }
 
     return(

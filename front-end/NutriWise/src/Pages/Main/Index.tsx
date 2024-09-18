@@ -8,11 +8,11 @@ const Main =()=>{
     const navigate = useNavigate();
 
     function handleClick(){
-       console.log('Haduken!')
+        navigate('/logIn');
     }
 
     function handleClickSignUp(){
-        navigate('/singup')
+        navigate('/singup');
     }
 
 

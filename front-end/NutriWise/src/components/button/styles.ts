@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     color: string;
 }
 
-interface LabelProps {
+export interface LabelProps {
     fontColor: string;
 }
 

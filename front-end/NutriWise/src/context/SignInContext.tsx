@@ -52,8 +52,9 @@ function SignInProvider({children}: SignInProviderProps){
         const emailExist = users.find((user: SignInData) => {
             return user.email === email;
         });
-
+        console.log('emailExist: ', emailExist)
         if(emailExist){
+            console.log('emailExist: ', emailExist)
             setSigInDataStatus(false);
         }else{
             // 2. Adiciona o novo usuário ao array

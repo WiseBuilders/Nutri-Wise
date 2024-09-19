@@ -21,8 +21,7 @@ import { SignInData, useSignIn } from '../../context/SignInContext';
 
 const SignUp = ()=>{
     const [switchForm, setSwitchForm] = useState(false);
-
-    const {getSignInData, sigInDataStatus} = useSignIn();
+    const [formData, setFormData] = useState<FormDataProps>();
     
     const navigate = useNavigate();
 
@@ -36,7 +35,7 @@ const SignUp = ()=>{
             .required('O gênero é obrigatório'),
         weight: Yup.number()
             .typeError('Peso deve ser em número')
-            .required('A peso é obrigatório'),
+            .required('A altura é obrigatório'),
         height: Yup.number()
             .typeError('Altura deve ser número')
             .required('A altura é obrigatório'),

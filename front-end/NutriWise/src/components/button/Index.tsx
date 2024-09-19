@@ -24,6 +24,3 @@ const Button: React.FC<ButtonProps> = ({ color, label,handleClick,fontColor, ...
 }
 
 export default Button;
-
-
-

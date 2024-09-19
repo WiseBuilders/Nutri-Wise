@@ -8,7 +8,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #00A000;
+    background-color: #0EC320;
     padding: 20px;
     box-sizing: border-box;
   
@@ -25,7 +25,8 @@ export const SignUpContainer = styled.div`
     background-color: #F97F33;
     border-radius: 10px;
     border: solid 5px #FFFFFF;
-    padding: 10px;
+    padding: 25px;
+    padding-bottom: 2.5%;
 `;
 
 export const Img = styled.img`
@@ -48,19 +49,21 @@ export const Title = styled.h1`
 `;
 
 export const Description = styled.p`
-  font-size: 1rem;
+  font-size: 0.25rem;
   text-align: center;
-  max-width: 600px;
-  margin-bottom: 30px;
+  max-width: 550px;
+  padding-top: 12px;
+  margin-bottom: 10px;
 
   @media (min-width: 768px) {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
 `;
 
 export const Input = styled(Field)`
   padding: 10px;
   font-size: 1rem;
+  width: 85%;
   border-radius: 5px;
   border: 1px solid #ccc;
 `;
@@ -68,30 +71,56 @@ export const Input = styled(Field)`
 export const Select = styled(Field)`
   padding: 10px;
   font-size: 1rem;
+  width: 50%;
   border-radius: 5px;
+  align-items: left;
   border: 1px solid #ccc;
   background-color: white;
 `;
 
 export const ErrorText = styled.div`
-    color: red;
+    color: black;
     font-size: 0.875rem;
 `;
 
 export const Text = styled.p`
   font-size: 1.31em;
   font-weight: 600;
-  margin-bottom: 5px;
-  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   color: #F6F8B0;
   
   p:first-child{
-    margin-bottom: 5px
+    margin-bottom: 5px;
+
   }
   p:last-child{
     margin-top: 5px;
   }
 `;
+
+export const Texto = styled.text`
+  margin-left: 15%;
+  display: flex;
+  flex-direction: column;
+  width: 35em;
+`;
+
+export const Peso = styled.text`
+  margin-left: 15%;
+  display: flex;
+  flex-direction: column;
+  width: 35em;
+`;
+
+export const Sexo = styled.text`
+text-align: left;
+margin-left: 35%;
+display: flex;
+flex-direction: column;
+width: 25em;
+`
+
 
 export const FormWrapper = styled(Formik)`
   display: flex;
@@ -101,7 +130,9 @@ export const FormWrapper = styled(Formik)`
 
 export const WeightLenghtContainer = styled.div`
   display: flex;
-  margin-top: 10px;
+  width: 111%;
+  margin-top: 7px;
+  margin-left: 5%;
   justify-content: space-evenly;
   gap: 10px;
 

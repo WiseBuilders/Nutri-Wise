@@ -13,7 +13,7 @@ export const Container = styled.button<ButtonProps>`
     align-items: center;
     justify-content:center ;
     background-color: ${(props) => props.color};
-    padding: 0.25em 1em;
+    padding: 0.25em 5em;
     border-radius: 5px;
     cursor: pointer;
     border: none;
@@ -32,4 +32,5 @@ export const Container = styled.button<ButtonProps>`
 
 export const Label = styled.div<LabelProps>`
     color: ${(props) => props.fontColor};
+    font-size: 1.15em;
 `

@@ -4,7 +4,9 @@ import logo from "../../assets/logo.png";
 import { Container, 
     Description, 
     ErrorText, 
+    Texto,
     Img, 
+    Sexo,
     Input, 
     Select, 
     SignUpContainer, 
@@ -114,31 +116,39 @@ const SignUp = ()=>{
                                         color='#F6F8B0'
                                         fontColor='#F97F33'
                                         handleClick={()=>handleClick(values)}
-                                        style={{width:"8em", height: "3em"}}
+                                        style={{width:"8em", height: "3em", marginTop: '15px'}}
                                     />
                                 </div> 
 
                             </> 
                             :
                             <>
+                         <Texto>
                                 <Text>Nome</Text>
                                 <Input type="text" name="name" placeholder="Digite seu nome completo"/>
                                 <ErrorMessage name="name" component={ErrorText} />
-                                    
-                                <Text>Data Nascimento</Text>
+                                
+
+                                <Text>Data de nascimento</Text>
                                 <Input type="text" name="birthdate" placeholder="dd/mm/aaaa"/>
                                 <ErrorMessage name="birthdate" component={ErrorText} />
-                                                                
-                                <Text>Gênero</Text>
+                         </Texto>
+
+                          <Sexo>
+                                <Text>Sexo</Text>
                                 <Select as="select" name="gender">
-                                    <option value="">Selecione o Gênero</option>
+                                    <option value="">Selecione o Sexo</option>
                                     <option value="feminino">Feminino</option>
                                     <option value="masculino">Masculino</option>
                                 </Select>
                                 <ErrorMessage name="gender" component={ErrorText} />
-                                    
-                                <WeightLenghtContainer>
-                                    <div>
+                          </Sexo>
+
+
+                                
+                        <WeightLenghtContainer>
+                        <div>
+                        <Text>Peso</Text>
                                         <Input 
                                             type="text" 
                                             name="weight" 
@@ -147,8 +157,10 @@ const SignUp = ()=>{
                                         />
                                         <ErrorMessage name="weight" component={ErrorText} />
                                     </div>
+
                                     
                                     <div>
+                                    <Text>Altura</Text>
                                         <Input 
                                             type="text" 
                                             name="height" 
@@ -158,7 +170,9 @@ const SignUp = ()=>{
                                     </div>
                                         
                                 </WeightLenghtContainer>
+                              
 
+                            <Texto>
                                 <Text>E-mail</Text>
                                 <Input type="email" name="email" placeholder="Digite seu nome e-mail"/>
                                 <ErrorMessage name="email" component={ErrorText} />
@@ -166,8 +180,10 @@ const SignUp = ()=>{
                                 <Text>Senha</Text>
                                 <Input type="password" name="password" placeholder="Crie sua senha"/>
                                 <ErrorMessage name="password" component={ErrorText} />
+                            </Texto>
 
-                                <div style={{marginTop: '15px'}}>
+
+                                <div style={{marginTop: '30px'}}>
                                     <Button
                                         label='Continuar'
                                         color='#F6F8B0'

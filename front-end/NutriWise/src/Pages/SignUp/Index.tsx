@@ -56,7 +56,7 @@ const SignUp = ()=>{
     }
 
     function handleClick({birthdate,email,gender,height,name,password,question1,question2,question3,weight}: SignInData){
-        if(sigInDataStatus){
+        if(!sigInDataStatus){
             getSignInData({
                 birthdate,
                 email,
@@ -71,6 +71,7 @@ const SignUp = ()=>{
             });
             navigate('/')
         } else{
+            console.log('sigInDataStatus: ', sigInDataStatus)
             alert('UsuarioJa cadastrado');
             setSwitchForm(false);
         }

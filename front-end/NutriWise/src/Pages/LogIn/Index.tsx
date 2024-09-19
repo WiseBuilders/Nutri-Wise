@@ -46,6 +46,7 @@ const LogIn = ()=>{
 
     function handleLogin(values:any){
         getUserData(values);
+        console.log('loginValidated: ', loginValidated)
         if(loginValidated){
             navigate('/dashboard')
         }

@@ -4,9 +4,7 @@ import logo from "../../assets/logo.png";
 import { Container, 
     Description, 
     ErrorText, 
-    Texto,
     Img, 
-    Sexo,
     Input, 
     Select, 
     SignUpContainer, 
@@ -23,8 +21,7 @@ import { SignInData, useSignIn } from '../../context/SignInContext';
 
 const SignUp = ()=>{
     const [switchForm, setSwitchForm] = useState(false);
-
-    const {getSignInData, sigInDataStatus} = useSignIn();
+    const [formData, setFormData] = useState<FormDataProps>();
     
     const navigate = useNavigate();
 
@@ -38,7 +35,7 @@ const SignUp = ()=>{
             .required('O gênero é obrigatório'),
         weight: Yup.number()
             .typeError('Peso deve ser em número')
-            .required('A peso é obrigatório'),
+            .required('A altura é obrigatório'),
         height: Yup.number()
             .typeError('Altura deve ser número')
             .required('A altura é obrigatório'),
@@ -58,7 +55,7 @@ const SignUp = ()=>{
     }
 
     function handleClick({birthdate,email,gender,height,name,password,question1,question2,question3,weight}: SignInData){
-        if(!sigInDataStatus){
+        if(sigInDataStatus){
             getSignInData({
                 birthdate,
                 email,
@@ -73,7 +70,6 @@ const SignUp = ()=>{
             });
             navigate('/')
         } else{
-            console.log('sigInDataStatus: ', sigInDataStatus)
             alert('UsuarioJa cadastrado');
             setSwitchForm(false);
         }
@@ -116,39 +112,31 @@ const SignUp = ()=>{
                                         color='#F6F8B0'
                                         fontColor='#F97F33'
                                         handleClick={()=>handleClick(values)}
-                                        style={{width:"8em", height: "3em", marginTop: '15px'}}
+                                        style={{width:"8em", height: "3em"}}
                                     />
                                 </div> 
 
                             </> 
                             :
                             <>
-                         <Texto>
                                 <Text>Nome</Text>
                                 <Input type="text" name="name" placeholder="Digite seu nome completo"/>
                                 <ErrorMessage name="name" component={ErrorText} />
-                                
-
-                                <Text>Data de nascimento</Text>
+                                    
+                                <Text>Data Nascimento</Text>
                                 <Input type="text" name="birthdate" placeholder="dd/mm/aaaa"/>
                                 <ErrorMessage name="birthdate" component={ErrorText} />
-                         </Texto>
-
-                          <Sexo>
-                                <Text>Sexo</Text>
+                                                                
+                                <Text>Gênero</Text>
                                 <Select as="select" name="gender">
-                                    <option value="">Selecione o Sexo</option>
+                                    <option value="">Selecione o Gênero</option>
                                     <option value="feminino">Feminino</option>
                                     <option value="masculino">Masculino</option>
                                 </Select>
                                 <ErrorMessage name="gender" component={ErrorText} />
-                          </Sexo>
-
-
-                                
-                        <WeightLenghtContainer>
-                        <div>
-                        <Text>Peso</Text>
+                                    
+                                <WeightLenghtContainer>
+                                    <div>
                                         <Input 
                                             type="text" 
                                             name="weight" 
@@ -157,10 +145,8 @@ const SignUp = ()=>{
                                         />
                                         <ErrorMessage name="weight" component={ErrorText} />
                                     </div>
-
                                     
                                     <div>
-                                    <Text>Altura</Text>
                                         <Input 
                                             type="text" 
                                             name="height" 
@@ -170,9 +156,7 @@ const SignUp = ()=>{
                                     </div>
                                         
                                 </WeightLenghtContainer>
-                              
 
-                            <Texto>
                                 <Text>E-mail</Text>
                                 <Input type="email" name="email" placeholder="Digite seu nome e-mail"/>
                                 <ErrorMessage name="email" component={ErrorText} />
@@ -180,10 +164,8 @@ const SignUp = ()=>{
                                 <Text>Senha</Text>
                                 <Input type="password" name="password" placeholder="Crie sua senha"/>
                                 <ErrorMessage name="password" component={ErrorText} />
-                            </Texto>
 
-
-                                <div style={{marginTop: '30px'}}>
+                                <div style={{marginTop: '15px'}}>
                                     <Button
                                         label='Continuar'
                                         color='#F6F8B0'

@@ -14,16 +14,13 @@ import { Container,
     Link
 } from "./styles";
 import { useLogIn } from "../../context/LogInContext";
-import Popup from "../../components/popup/Index";
+import Popup from "../../components/popup";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const LogIn = ()=>{
    
     const {getUserData,validated} = useLogIn();
     const {loginValidated,message,type} = validated;
-
-    const navigate = useNavigate();
 
     // Estado para controlar a exibição do Popup
     const [showPopup, setShowPopup] = useState(false);
@@ -32,6 +29,7 @@ const LogIn = ()=>{
         email: Yup.string().email('Formato do e-mail inválido'),
         password: Yup.string().required('Digite uma senha')
     });
+    console.log('loginValidated: ', loginValidated)
 
     useEffect(() => {
         // Sempre que o estado de loginValidated mudar, controla o popup
@@ -69,7 +67,7 @@ const LogIn = ()=>{
                 <Formik
                     initialValues={{email: '', password: ''}}
                     validationSchema={validationSchema}
-                    onSubmit={(values) => handleLogin(values)}
+                    onSubmit={(values) => getUserData(values)}
                     
                 >
                     <Form style={{display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center"}}>

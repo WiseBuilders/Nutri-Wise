@@ -23,7 +23,7 @@ export interface LogInInterface{
 }
 
 interface MessageInterface{
-    loginValidated: boolean | any;
+    loginValidated: boolean | null;
     message: string;
     type: 'success' | 'error';
 }
@@ -50,15 +50,18 @@ function LogInProvider({children}: LogInProviderProps){
         const validatedUser: UserInterface = users.find((user: UserInterface) => {
             return user.email === email && user.password === password;
         });
-
+        console.log('validatedUser: ', validated)
         //3. Se tiver um usuario com a mesma senha e login, salva as informaçoes na variavel
         if(validatedUser){
+            console.log('Usuario validado')
             setUserData(validatedUser);
             setValidated({loginValidated: true, message: "Login sucesso", type:"success"})
             
         }else{
+            console.log('Usuario nao validado')
             setValidated({loginValidated: false, message: "Senha ou e-mail incorretos", type:"error"})
         }
+        console.log('loginValidated: ', validated)
         
     }
 

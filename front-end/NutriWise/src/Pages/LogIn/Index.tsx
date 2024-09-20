@@ -15,7 +15,7 @@ import { Container,
 } from "./styles";
 import { useLogIn } from "../../context/LogInContext";
 import Popup from "../../components/popup/Index";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LogIn = ()=>{
@@ -27,29 +27,30 @@ const LogIn = ()=>{
 
     // Estado para controlar a exibição do Popup
     const [showPopup, setShowPopup] = useState(false);
+   
     
     const validationSchema = Yup.object().shape({
         email: Yup.string().email('Formato do e-mail inválido'),
         password: Yup.string().required('Digite uma senha')
     });
 
-    useEffect(() => {
-        // Sempre que o estado de loginValidated mudar, controla o popup
-        if (loginValidated !== undefined) {
-            setShowPopup(true);
-            const timer = setTimeout(() => {
-                setShowPopup(false);  // Oculta o popup após 3 segundos
-            }, 3000);
-            return () => clearTimeout(timer);  // Limpa o timer ao desmontar
-        }
-    }, [loginValidated]);  // Roda sempre que o loginValidated for alterado
-
-    function handleLogin(values:any){
+    const handleLogin = useCallback((values: any)=>{
         getUserData(values);
-        if(loginValidated){
-            navigate('/dashboard')
+    },[getUserData])
+    
+    useEffect(() => {
+        if (loginValidated === true) {
+          // Redireciona para a dashboard se o login for validado
+          navigate('/dashboard');
+        } else if (loginValidated === false) {
+          // Mostra o popup se a validação falhar
+          setShowPopup(true);
+          const timer = setTimeout(() => {
+            setShowPopup(false);
+          }, 3000);
+          return () => clearTimeout(timer); // Limpa o timeout ao desmontar
         }
-    }
+    }, [loginValidated, navigate]);
 
     return(
         <Container>

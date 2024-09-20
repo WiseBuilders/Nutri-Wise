@@ -24,7 +24,7 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 - **Desenvolvedor:** Nicolas Henrique
 - **Desenvolvedor:** Rodrigo Augusto
 
-  ### Tecnologias Utilizadas
+### Tecnologias Utilizadas
 - **Prototipagem de telas:** (Figma) https://www.figma.com/design/Qtldmop778ivbphTyNhUqA/NutriWise-Interface?node-id=16-2&t=24rc7vbPM5bGp5C6-1
 - **Frontend:** HTML, CSS, TypeScript, ReactJS
 - **Backend:** Node.js, Express

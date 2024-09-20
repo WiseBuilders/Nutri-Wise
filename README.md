@@ -6,7 +6,7 @@
  
  
 <br>**Olá, seja bem-vindo!<br>**
-Somos a equipe de desenvolvimento WiseBuilders, apresentamos a Nutriwise, uma aplicação que auxilia no controle de nutrientes, registro de calorias gastas e consumidas e no balanceamento delas para buscar o melhor da sua saúde!
+<br>Somos a equipe de desenvolvimento WiseBuilders, apresentamos a Nutriwise, uma aplicação que auxilia no controle de nutrientes, registro de calorias gastas e consumidas e no balanceamento delas para buscar o melhor da sua saúde!
 
 Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 - Controle de peso a partir de gráficos, registro do peso diário e de dias anteriores, para melhor análise de comparação.
@@ -17,10 +17,10 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 - Página Informativa sobre os riscos de não balancear a quantidade de nutrientes nas refeições e suas consequências.
  
 ### Equipe WiseBuilders
-- **Scrum Master:** Luiz Fernando 
+- **Scrum Master:** Luana Pinheiro 
 - **Product Owner:** Junior Signorini
 - **Desenvolvedor:** Edlaine Souza
-- **Desenvolvedor:** Luana Pinheiro
+- **Desenvolvedor:** Luiz Fernando
 - **Desenvolvedor:** Nicolas Henrique
 - **Desenvolvedor:** Rodrigo Augusto
 
@@ -32,6 +32,30 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 - **Controle de Versão:** GitHub
 - **Controle de Atividades e Funções:** Trello
 
+##  Backlog do Produto
+ 
+| User Stories      |
+|---------------------|
+| Tela Inicial |
+| Telas de Cadastro |
+| Tela de Login |
+| Tela Perfil/Home |
+| Tela Página Informativa |
+| Tela Cálculo de IMC e TMB |
+| Tela Peso |
+| Gráfico de Peso |
+| Tela Registro de Calorias 
+| Gráfico cálculo diário |
+| Tela Pesquisa de Alimentos |
+| Tela Histórico de Registros |
+| Documentação Github |
+| Organização de funções Trello |
+| Conexão ao banco de dados pelo servidor utilizando 'pg' client |
+| Criação do banco de dados |
+| Inserção de dados tabela excel TACO |
+
+
+
 
 ###
 ###
@@ -39,9 +63,9 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
  
 | Requisitos        |  Progresso                       |
 |---------------------|---------------------------------|
-| Tela Inicial    | **Em Andamento**         |
-| Telas de Cadastro    | **Em Andamento**        |
-| Tela de Login  | **Em Andamento**         |
-| Github - Documentação | **Em Andamento**        |
+| Tela Inicial    | **Finalizado**         |
+| Telas de Cadastro    | **Finalizado**        |
+| Tela de Login  | **Finalizado**         |
+| Github - Documentação | **Finalizado**        |
 | Figma - Protótipo | **Finalizado**        |
  

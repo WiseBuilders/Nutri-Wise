@@ -42,6 +42,14 @@ const LogIn = ()=>{
         }
     }, [loginValidated]);  // Roda sempre que o loginValidated for alterado
 
+    function handleLogin(values:any){
+        getUserData(values);
+        console.log('loginValidated: ', loginValidated)
+        if(loginValidated){
+            navigate('/dashboard')
+        }
+    }
+
     return(
         <Container>
             {/* Mostra o popup somente quando showPopup for true */}

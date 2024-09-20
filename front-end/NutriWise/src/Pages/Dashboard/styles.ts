@@ -52,7 +52,11 @@ export const ButtonsContainer = styled.div`
 export const DashboardButton = styled(Button)`
     width: 436px;
     height: 132px;
-    font-size: 42px;
+    font-size: 32px;
     border: solid;
     border-color: #068713;
+
+    @media only screen and (max-width: 1400px) {
+        font-size: 24px;
+    }
 `;

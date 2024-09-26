@@ -16,13 +16,15 @@ import { Container,
 import { useLogIn } from "../../context/LogInContext";
 
 import Popup from "../../components/popup/Index";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LogIn = ()=>{
    
     const {getUserData,validated} = useLogIn();
     const {loginValidated,message,type} = validated;
+
+    const navigate = useNavigate();
 
     // Estado para controlar a exibição do Popup
     const [showPopup, setShowPopup] = useState(false);
@@ -32,11 +34,6 @@ const LogIn = ()=>{
         email: Yup.string().email('Formato do e-mail inválido'),
         password: Yup.string().required('Digite uma senha')
     });
-    console.log('loginValidated: ', loginValidated)
-
-    const handleLogin = useCallback((values: any)=>{
-        getUserData(values);
-    },[getUserData])
     
     useEffect(() => {
         if (loginValidated === true) {

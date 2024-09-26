@@ -21,8 +21,9 @@ import { SignInData, useSignIn } from '../../context/SignInContext';
 
 const SignUp = ()=>{
     const [switchForm, setSwitchForm] = useState(false);
-    const [formData, setFormData] = useState<FormDataProps>();
     
+    const {getSignInData, sigInDataStatus} = useSignIn();
+
     const navigate = useNavigate();
 
     const validationSchema = Yup.object({
@@ -55,7 +56,8 @@ const SignUp = ()=>{
     }
 
     function handleClick({birthdate,email,gender,height,name,password,question1,question2,question3,weight}: SignInData){
-        if(sigInDataStatus){
+        console.log('sigInDataStatus: ', sigInDataStatus)
+        if(!sigInDataStatus){
             getSignInData({
                 birthdate,
                 email,

@@ -53,6 +53,8 @@ function SignInProvider({children}: SignInProviderProps){
             return user.email === email;
         });
 
+        console.log('emailExist: ', emailExist)
+
         if(emailExist){
             setSigInDataStatus(false);
         }else{

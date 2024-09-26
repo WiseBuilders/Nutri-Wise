@@ -30,7 +30,7 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 - **Backend:** Node.js, Express
 - **Banco de Dados:** Postgres
 - **Controle de Versão:** GitHub
-- **Controle de Atividades e Funções:** Trello
+- **Controle de Atividades e Funções:** (Trello) https://trello.com/b/d1vqBmgA/nutriwise-1-sprint
 
 ##  Backlog do Produto
  

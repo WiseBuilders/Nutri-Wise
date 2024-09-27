@@ -43,7 +43,7 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 | Tela Peso |
 | Gráfico de Peso |
 | Tela Registro de Calorias 
-| Gráfico cálculo diário |
+| Gráfico cálculo diário de calorias |
 | Tela Pesquisa de Alimentos |
 | Tela Exercícios Físicos |
 | Tela Histórico de Registros |

@@ -48,7 +48,8 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 | Tela Exercícios Físicos |
 | Tela Histórico de Registros |
 | Documentação Github |
-| Organização de funções Trello |
+| Trello - Início de planejamento |
+| Figma - Protótipo |
 | Conexão ao banco de dados utilizando 'pg' client |
 | Criação do banco de dados |
 | Inserção de dados tabela TACO |
@@ -65,6 +66,7 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 | Tela Perfil/Home  | **Finalizado**         |
 | Github - Documentação | **Finalizado**        |
 | Figma - Protótipo | **Finalizado**        |
+| Trello - Início de planejamento | **Finalizado**        |
  
  
 

@@ -51,7 +51,7 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 | Organização de funções Trello |
 | Conexão ao banco de dados utilizando 'pg' client |
 | Criação do banco de dados |
-| Inserção de dados tabela excel TACO |
+| Inserção de dados tabela TACO |
  
  
 ###

@@ -62,7 +62,6 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 | Tela Inicial    | **Finalizado**         |
 | Telas de Cadastro    | **Finalizado**        |
 | Tela de Login  | **Finalizado**         |
-| Tela Perfil/Home | **Finalizado**         |
 | Github - Documentação | **Finalizado**        |
 | Figma - Protótipo | **Finalizado**        |
  

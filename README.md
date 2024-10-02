@@ -10,9 +10,8 @@ Somos a equipe de desenvolvimento WiseBuilders, apresentamos a Nutriwise, uma ap
 Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 - Controle de peso a partir de gráficos, registro do peso diário, para melhor análise de comparação.
 - Exercícios físicos praticados e o quanto reduzem as suas calorias a partir do tempo que são realizados.
-- Reutilização de cardápios já registrados no perfil do usuário, garantindo praticidade e versatilidade de opções prontas.
+- Criação de Cardápio de refeições para que o usuário possa montar e registrar mais de uma vez a mesma refeição, garantindo praticidade e versatilidade.
 - Cálculo de IMC (Índice de Massa Corpórea) e TMB (Taxa de Metabolismo Basal) realizados diariamente.
-- PopUp de alerta em alimentos com alto teor de nutrientes que sejam nocivos para a saúde do usuário em altas quantidades, como alto teor de gordura, glúten ou lactose.
 - Página Informativa sobre os riscos de não balancear a quantidade de nutrientes nas refeições e suas consequências.
   
 ### Equipe WiseBuilders

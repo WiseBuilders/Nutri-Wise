@@ -1,61 +1,92 @@
 import { Field, Formik } from "formik";
 import styled from "styled-components";
 
+
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #00A000;
-    padding: 20px;
+    padding: 0px;
+
+
+
     box-sizing: border-box;
-  
+
     @media (min-width: 768px) {
-        padding: 40px;
+        padding: 0px;
+
+    }
+`;
+
+export const OuterContainer = styled.div`
+
+    background-image: url('imagens/background_login.png'); 
+    background-size: cover; 
+    background-position: center;
+
+    @media (min-width: 768px) {
+        background-image: url('imagens/background_login.png'); 
+        background-size: cover; 
+        background-position: center;
+
     }
 `;
 
 export const LogInContainer = styled.div`
     display: flex;
-    justify-content: center;
+    align-items:flex-start;
     flex: 1;
     flex-direction: column;
-    padding: 2em;
-    border: solid 3px #FFFFFF;
+    padding: 4em;
+    padding-top: 11em;
+    border: solid 5px #FFFFFF;
+    background-color: #0EC320;
     border-radius: 30px;
-    width: 560px;
+    width: 100%;
+
 
     @media (min-width: 400px) {
-        width: 400px;
-        border: solid 3px #FFFFFF;
+        width: 100%;
+        border: solid 5px #FFFFFF;
+
     }
 `;
 
 export const Img = styled.img`
-  width: 70px;
+  width: 100px;
+  align-items: center;
+  border: solid 3px #3EEB4F;
+  border-radius: 15px;
+  position: relative;
+  bottom: 160px;
 
   @media (min-width: 768px) {
-    width: 70px;
+    width: 80px;
+    position: relative;
+    bottom: 160px;
+    align-items: center;
   }
 `;
 
 export const TittleContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 45px;
-
+    display:flex;
+    position: relative;
+    bottom:20px;
 `;
 
 export const TittleText = styled.h1`
-    font-size: 30px;
+    font-size: 35px;
 `;
 
 export const Input = styled(Field)`
-  padding: 10px;
+  padding: 15px;
+  width: 200%;
+  position: relative;
+  bottom: 40px;
   font-size: 1rem;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid #ccc;
 `;
 
@@ -72,17 +103,18 @@ export const FormWrapper = styled(Formik)`
 
 export const Label = styled.label`
     color: #ffffff;
-    margin-bottom: 5px;
+    position: relative;
+    bottom: 40px;
+    margin-bottom: 10px;
 `;
 
 export const InputWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
+    margin-bottom: 17px;
 `;
 
 export const Link = styled.a`
     color: #ffffff;
-    margin-bottom: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 80px;
 `;

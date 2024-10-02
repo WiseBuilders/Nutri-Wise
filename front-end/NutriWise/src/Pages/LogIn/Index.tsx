@@ -4,6 +4,7 @@ import logo from "../../assets/logo.png";
 import Button from "../../components/button/Index";
 import { Container, 
     LogInContainer, 
+    OuterContainer,
     Img, 
     TittleContainer, 
     TittleText, 
@@ -58,18 +59,20 @@ const LogIn = ()=>{
                     type={type}
                 />
             )}
+            <OuterContainer>
             <LogInContainer>
                 <TittleContainer>
-                    <TittleText>LogIn</TittleText>
-                    <Img src={logo} />
+                    <TittleText>Login</TittleText>
                 </TittleContainer>
+                <Img src={logo} />
                 <Formik
                     initialValues={{email: '', password: ''}}
                     validationSchema={validationSchema}
                     onSubmit={(values) => getUserData(values)}
                     
                 >
-                    <Form style={{display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center"}}>
+                    <Form style={{ display: "flex", justifyContent: "flex-start", flexDirection: "column", alignItems: "flex-start", marginRight: "6em" }}>
+
                         <InputWrapper>
                             <Label htmlFor="Email">E-mail</Label>
                             <Input
@@ -89,22 +92,26 @@ const LogIn = ()=>{
                             />
                             <ErrorMessage name="password" component={ErrorText} />
                         </InputWrapper>
-                        <Link href="url">Esqueceu sua senha? Redefina aqui.</Link>
+                        <Link style={{marginLeft: "6em"}} href="url">Esqueceu sua senha? Redefina aqui.</Link>
                         <Button 
                             type="submit"
                             color="#00A000"
                             label="Login"
                             fontColor="#FFFFFF"
-                            style={{width:"10em", 
-                                height: "3em", 
+                            style={{width:"10em",
+                            marginLeft:"12.5em",
+                                height: "4em",
                                 border:"solid", 
-                                borderColor: "#ffffff" 
+                                borderColor: "#ffffff", 
+                                borderRadius: "10px"
                             }}
                         />
+
                     </Form>
                 </Formik>
 
             </LogInContainer>
+            </OuterContainer>
         </Container>
     )
 }

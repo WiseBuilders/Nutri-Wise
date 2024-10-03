@@ -80,6 +80,8 @@ export const Select = styled(Field)`
 export const ErrorText = styled.div`
     color: red;
     font-size: 0.875rem;
+    position: relative;
+    top: 10px;
 `;
  
 export const Text = styled.p`

@@ -1,135 +1,178 @@
-import { Field, Formik } from "formik";
-import styled from "styled-components";
+import {ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import logo from "../../assets/logo.png";
+import { Container,
+    Description,
+    ErrorText,
+    Img,
+    Input,
+    Select,
+    Text2,
+    SignUpContainer,
+    Title,
+    Text,
+    WeightLenghtContainer,
+    FormWrapper
+} from "./styles";
+import Button from '../../components/button/Index';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { SignInData, useSignIn } from '../../context/SignInContext';
  
  
-export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #00A000;
-    padding: 20px;
-    box-sizing: border-box;
+const SignUp = ()=>{
+    const [switchForm, setSwitchForm] = useState(false);
+   
+    const {getSignInData, sigInDataStatus} = useSignIn();
  
-    @media (min-width: 768px) {
-        padding: 40px;
+    const navigate = useNavigate();
+ 
+    const validationSchema = Yup.object({
+        name: Yup.string()
+            .required('O nome é obrigatório'),
+        birthdate: Yup.string()
+          .matches(/^\d{2}\/\d{2}\/\d{4}$/, 'Data de nascimento deve estar no formato DD/MM/AAAA')
+          .required('A data de nascimento é obrigatória'),
+        gender: Yup.string()
+            .required('O sexo é obrigatório'),
+        weight: Yup.number()
+            .typeError('Peso deve ser em número')
+            .required('O peso é obrigatório'),
+        height: Yup.number()
+            .typeError('Altura deve ser número')
+            .required('A altura é obrigatório'),
+        email: Yup.string()
+            .email('Email inválido')
+            .required('O email é obrigatório'),
+        password: Yup.string()
+            .min(6, 'A senha deve ter pelo menos 6 caracteres')
+            .required('A senha é obrigatória'),
+        question1: Yup.string(),
+        question2: Yup.string(),
+        question3: Yup.string(),
+    });
+ 
+    function handleSwitchForm(){
+        setSwitchForm(true);
     }
-`;
  
-export const SignUpContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #F97F33;
-    border-radius: 18px;
-    border: solid 5px #FFFFFF;
-    padding: 10px;
-    padding-bottom:5em;
-`;
- 
-export const Img = styled.img`
-    margin: 20px 0;
-    width: 95px;
-    height: auto;
- 
-    @media (min-width: 768px) {
-        width: 95x;
+    function handleClick({birthdate,email,gender,height,name,password,question1,question2,question3,weight}: SignInData){
+        console.log('sigInDataStatus: ', sigInDataStatus)
+        if(!sigInDataStatus){
+            getSignInData({
+                birthdate,
+                email,
+                gender,
+                height,
+                name,
+                password,
+                question1,
+                question2,
+                question3,
+                weight
+            });
+            navigate('/')
+        } else{
+            alert('Usuario já cadastrado');
+            setSwitchForm(false);
+        }
     }
-`;
  
-export const Title = styled.h1`
-  font-size: 2rem;
-  text-align: center;
+    return(
+        <Container>
+            <SignUpContainer>
+                <Img src={logo}/>
+                <Title>Cadastro de Usuário</Title>
+                <Description>
+                    Precisaremos de alguns de seus dados para cálculos e
+                    maior precisão nos resultados
+                </Description>
  
-  @media (min-width: 768px) {
-    font-size: 2.5rem;
-  }
-`;
+                <FormWrapper
+                    initialValues={{name:'', birthdate:"",gender:"",weight:"",
+                        height:"",email:"", password:"", question1:"", question2:"",
+                        question3: ""
+                    }}
+                    validationSchema={validationSchema}
+                    onSubmit={(values) =>console.log('values: ', values)}
+                >
+                    {({values}:any)=>(
+                        <>
+                        {switchForm ?
+                            <>
+                                
+                                    
  
-export const Description = styled.p`
-  font-size: 1rem;
-  text-align: center;
-  max-width: 600px;
-  position: relative;
-  top: 13px;
-  margin-bottom: 30px;
+                            </>
+                            :
+                            <>
+                                <Text style={{alignItems: "left", position:"relative", marginRight:"21em" }}>Nome</Text>
+                                <Input type="text" name="name" placeholder="Digite seu nome completo"/>
+                                <ErrorMessage name="name" component={ErrorText} />
+                                   
+                                <Text style={{alignItems: "left", position:"relative", marginRight:"16em" }}>Data Nascimento</Text>
+                                <Input type="text" name="birthdate" placeholder="dd/mm/aaaa"/>
+                                <ErrorMessage name="birthdate" component={ErrorText} />
+                                                               
+                                <Text>Sexo</Text>
+                                <Select as="select" name="gender">
+                                    <option value="">Selecione o Sexo</option>
+                                    <option value="feminino">Feminino</option>
+                                    <option value="masculino">Masculino</option>
+                                </Select>
+                                <ErrorMessage name="gender" component={ErrorText} />
+                                   
+                                <WeightLenghtContainer style={{marginLeft:"2em"}}>
+                                    <Text2>Peso
+                                        <Input
+                                            type="text"
+                                            name="weight"
+                                            placeholder="Digite seu Peso"
+                                           
+                                        />
+                                        <ErrorMessage name="weight" component={ErrorText} />
+                                        </Text2>
+                                   
+                                    <Text2>Altura
+                                        <Input
+                                            type="text"
+                                            name="height"
+                                            placeholder="Digite sua Altura"
+                                        />
+                                        <ErrorMessage name="height" component={ErrorText} />
+                                        </Text2>
+                                       
+                                </WeightLenghtContainer>
  
-  @media (min-width: 768px) {
-    font-size: 1.25rem;
-  }
-`;
+                                <Text style={{alignItems: "left", position:"relative", marginRight:"21em" }}>E-mail</Text>
+                                <Input type="email" name="email" placeholder="Digite seu nome e-mail"/>
+                                <ErrorMessage name="email" component={ErrorText} />
+               
+                                <Text style={{alignItems: "left", position:"relative", marginRight:"21em" }}>Senha</Text>
+                                <Input type="password" name="password" placeholder="Crie sua senha"/>
+                                <ErrorMessage name="password" component={ErrorText} />
  
-export const Input = styled(Field)`
-  padding: 10px;
-  font-size: 1rem;
-  width:87%;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-`;
+                                <div style={{marginTop: '2.5em'}}>
+                                <Button
+                                        label='Cadastrar'
+                                        color='#F6F8B0'
+                                        fontColor='#F97F33'
+                                        handleClick={()=>handleClick(values)}
+                                        style={{width: "9em", height: "3.5em", borderRadius: "8px"}}
+                                    />
+                                </div>
+                                </>
+                       
+                        }
+                               
+                             
+                        </>
+                    )}
+                </FormWrapper>
+            </SignUpContainer>
+     
+        </Container>
+    )
+}
  
-export const Select = styled(Field)`
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  background-color: white;
-`;
- 
-export const ErrorText = styled.div`
-    color: red;
-    font-size: 0.875rem;
-`;
- 
-export const Text = styled.p`
-  font-size: 1.31em;
-  font-weight: 600;
-  align-items: left;
-  position:"relative";
-  margin-right:"5em"
-  margin-bottom: 15px;
-  margin-top: 15px;
-  color: #F6F8B0;
- 
-  p:first-child{
-    margin-bottom: 5px
-  }
-  p:last-child{
-    margin-top: 5px;
-  }
-`;
- 
-export const Text2 = styled.p`
-  font-size: 1.31em;
-  font-weight: 600;
-  align-items: left;
- 
-  color: #F6F8B0;
- 
-  p:first-child{
-    margin-bottom: 5px
-  }
-  p:last-child{
-    margin-top: 5px;
-  }
-`;
- 
-export const FormWrapper = styled(Formik)`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
- 
-`;
- 
-export const WeightLenghtContainer = styled.div`
-  display: flex;
-  margin-top: 10px;
-  justify-content: space-evenly;
-  gap: 10px;
- 
-  @media (max-width: 412px) {
-    flex-direction: column;
-  }
- 
-`
+export default SignUp;

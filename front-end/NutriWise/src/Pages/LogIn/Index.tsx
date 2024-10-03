@@ -109,7 +109,6 @@ const LogIn = ()=>{
  
                     </Form>
                 </Formik>
- 
             </LogInContainer>
             </OuterContainer>
         </Container>

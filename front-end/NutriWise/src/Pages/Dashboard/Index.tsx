@@ -1,11 +1,11 @@
 import { useLogIn } from "../../context/LogInContext";
 import { Img } from "../LogIn/styles";
-import { ButtonsContainer, DashboardButton, HeaderContainer, NameUserText, OptionsContainer, QuestionContainer, Text } from "./styles";
+import { ButtonsContainer, DashboardButton, HeaderContainer, NameUserText, OptionsContainer, Text } from "./styles";
 import logo from "../../assets/logo.png";
 import foto from "../../assets/foto.svg";
 const Dashboard = ()=>{
     const {userData} = useLogIn();
-    const {email,gender,height,name,question2,question3,weight} = userData;
+    const {email,gender,height,name,weight} = userData;
     console.log('USERDATA: ', userData)
     return(
         <>
@@ -15,16 +15,12 @@ const Dashboard = ()=>{
                     <NameUserText>{name}</NameUserText>
                     <Text>Nome Completo: {name}</Text>
                     <Text>E-mail: {email}</Text>
-                    <Text>Gênero: {gender}</Text>
+                    <Text>Sexo: {gender}</Text>
                 </div>
                 <div>
                     <Text>Altura: {height}m</Text>
                     <Text>Peso: {weight}kg</Text> 
-                </div>
-                <div>
-                    <QuestionContainer>Alergia: {question2}</QuestionContainer>
-                    <QuestionContainer>{question3}</QuestionContainer>
-                </div>
+                </div> 
                 <Img src={logo}/>
             </HeaderContainer>
             <OptionsContainer>

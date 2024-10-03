@@ -52,9 +52,6 @@ const SignUp = ()=>{
         question3: Yup.string(),
     });
  
-    function handleSwitchForm(){
-        setSwitchForm(true);
-    }
  
     function handleClick({birthdate,email,gender,height,name,password,question1,question2,question3,weight}: SignInData){
         console.log('sigInDataStatus: ', sigInDataStatus)

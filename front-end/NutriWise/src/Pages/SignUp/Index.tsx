@@ -1,4 +1,4 @@
-import {ErrorMessage } from 'formik';
+import {ErrorMessage,Field,Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import logo from "../../assets/logo.png";
 import { Container,
@@ -6,27 +6,23 @@ import { Container,
     ErrorText,
     Img,
     Input,
-    Select,
     Text2,
     SignUpContainer,
     Title,
     Text,
     WeightLenghtContainer,
-    FormWrapper
 } from "./styles";
+import Popup from "../../components/popup/Index";
 import Button from '../../components/button/Index';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { SignInData, useSignIn } from '../../context/SignInContext';
+import {useSignIn } from '../../context/SignInContext';
+import { useEffect, useState } from 'react';
  
  
 const SignUp = ()=>{
-    const [switchForm, setSwitchForm] = useState(false);
-   
-    const {getSignInData, sigInDataStatus} = useSignIn();
- 
-    const navigate = useNavigate();
- 
+    const {getSignInData} = useSignIn();
+    const [errorMessage, setErrorMessage] = useState<string | null>(null); // Estado para capturar erro
+    const [showPopup, setShowPopup] = useState(false); // Estado para controlar a visibilidade do popup
+    
     const validationSchema = Yup.object({
         name: Yup.string()
             .required('O nome é obrigatório'),
@@ -47,33 +43,36 @@ const SignUp = ()=>{
         password: Yup.string()
             .min(6, 'A senha deve ter pelo menos 6 caracteres')
             .required('A senha é obrigatória'),
-        question1: Yup.string(),
-        question2: Yup.string(),
-        question3: Yup.string(),
     });
- 
- 
-    function handleClick({birthdate,email,gender,height,name,password,question1,question2,question3,weight}: SignInData){
-        console.log('sigInDataStatus: ', sigInDataStatus)
-        if(!sigInDataStatus){
-            getSignInData({
-                birthdate,
-                email,
-                gender,
-                height,
-                name,
-                password,
-                question1,
-                question2,
-                question3,
-                weight
-            });
-            navigate('/')
-        } else{
-            alert('Usuario já cadastrado');
-            setSwitchForm(false);
+
+    const handleSubmit = async (values: any) => {
+        try {
+            await getSignInData(values);
+            setErrorMessage(null); // Limpa a mensagem de erro se bem-sucedido
+            setShowPopup(false); // Fecha o popup se o cadastro for bem-sucedido
+        } catch (error: any) {
+            console.log("Erro capturado:", error); // Verificando o erro
+            // Captura a mensagem de erro e exibe no popup
+            setErrorMessage(error.response?.data?.message || 'Erro ao tentar cadastrar. Tente novamente.');
+            console.log("Setando showPopup para true"); // Log para verificar se isso está sendo chamado
+            setShowPopup(true); // Mostra o popup ao capturar o erro
         }
-    }
+    };
+
+    useEffect(() => {
+        console.log("useEffect chamado com showPopup:", showPopup); // Verifica se o useEffect está sendo chamado
+        if (showPopup) {
+            // O popup desaparece após 3 segundos
+            const timer = setTimeout(() => {
+                console.log("Fechando popup após 3 segundos");
+                setShowPopup(false);
+                setErrorMessage(null); // Limpa a mensagem de erro após ocultar o popup
+            }, 3000);
+
+            // Limpa o timeout ao desmontar o componente ou quando o popup fecha
+            return () => clearTimeout(timer);
+        }
+    }, [showPopup]); // Monitora mudanças apenas em showPopup
  
     return(
         <Container>
@@ -85,89 +84,76 @@ const SignUp = ()=>{
                     maior precisão nos resultados
                 </Description>
  
-                <FormWrapper
+                <Formik
                     initialValues={{name:'', birthdate:"",gender:"",weight:"",
-                        height:"",email:"", password:"", question1:"", question2:"",
-                        question3: ""
+                        height:"",email:"", password:""
                     }}
                     validationSchema={validationSchema}
-                    onSubmit={(values) =>console.log('values: ', values)}
+                    onSubmit={handleSubmit}
                 >
-                    {({values}:any)=>(
-                        <>
-                        {switchForm ?
-                            <>
-                                
-                                    
- 
-                            </>
-                            :
-                            <>
-                                <Text style={{alignItems: "left", position:"relative", marginRight:"21em" }}>Nome</Text>
-                                <Input type="text" name="name" placeholder="Digite seu nome completo"/>
-                                <ErrorMessage name="name" component={ErrorText} />
+                <Form style={{display: 'flex', flexDirection: 'column', alignItems: 'center' }}>            
+                    <Text style={{alignItems: "left", position:"relative", marginRight:"21em" }}>Nome</Text>
+                    <Input type="text" name="name" placeholder="Digite seu nome completo"/>
+                    <ErrorMessage name="name" component={ErrorText} />
                                    
-                                <Text style={{alignItems: "left", position:"relative", marginRight:"16em" }}>Data Nascimento</Text>
-                                <Input type="text" name="birthdate" placeholder="dd/mm/aaaa"/>
-                                <ErrorMessage name="birthdate" component={ErrorText} />
+                    <Text style={{alignItems: "left", position:"relative", marginRight:"16em" }}>Data Nascimento</Text>
+                        <Input type="text" name="birthdate" placeholder="dd/mm/aaaa"/>
+                        <ErrorMessage name="birthdate" component={ErrorText} />
                                                                
-                                <Text>Sexo</Text>
-                                <Select as="select" name="gender">
-                                    <option value="">Selecione o Sexo</option>
-                                    <option value="feminino">Feminino</option>
-                                    <option value="masculino">Masculino</option>
-                                </Select>
-                                <ErrorMessage name="gender" component={ErrorText} />
+                        <Text>Sexo</Text>
+                        <Field as="select" name="gender">
+                            <option value="">Selecione o Sexo</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="masculino">Masculino</option>
+                        </Field>
+                        <ErrorMessage name="gender" component={ErrorText} />
                                    
-                                <WeightLenghtContainer style={{marginLeft:"2em"}}>
-                                    <Text2>Peso
-                                        <Input
-                                            type="text"
-                                            name="weight"
-                                            placeholder="Digite seu Peso"
+                        <WeightLenghtContainer style={{marginLeft:"2em"}}>
+                            <Text2>Peso
+                                <Input
+                                    type="text"
+                                    name="weight"
+                                    placeholder="Digite seu Peso"
                                            
-                                        />
-                                        <ErrorMessage name="weight" component={ErrorText} />
-                                        </Text2>
+                                />
+                                <ErrorMessage name="weight" component={ErrorText} />
+                            </Text2>
                                    
-                                    <Text2>Altura
-                                        <Input
-                                            type="text"
-                                            name="height"
-                                            placeholder="Digite sua Altura"
-                                        />
-                                        <ErrorMessage name="height" component={ErrorText} />
-                                        </Text2>
+                            <Text2>Altura
+                                <Input
+                                    type="text"
+                                    name="height"
+                                    placeholder="Digite sua Altura"
+                                />
+                                <ErrorMessage name="height" component={ErrorText} />
+                            </Text2>
                                        
-                                </WeightLenghtContainer>
+                        </WeightLenghtContainer>
  
-                                <Text style={{alignItems: "left", position:"relative", marginRight:"21em" }}>E-mail</Text>
-                                <Input type="email" name="email" placeholder="Digite seu nome e-mail"/>
-                                <ErrorMessage name="email" component={ErrorText} />
+                        <Text style={{alignItems: "left", position:"relative", marginRight:"21em" }}>E-mail</Text>
+                        <Input type="email" name="email" placeholder="Digite seu nome e-mail"/>
+                        <ErrorMessage name="email" component={ErrorText} />
                
-                                <Text style={{alignItems: "left", position:"relative", marginRight:"21em" }}>Senha</Text>
-                                <Input type="password" name="password" placeholder="Crie sua senha"/>
-                                <ErrorMessage name="password" component={ErrorText} />
+                        <Text style={{alignItems: "left", position:"relative", marginRight:"21em" }}>Senha</Text>
+                        <Input type="password" name="password" placeholder="Crie sua senha"/>
+                        <ErrorMessage name="password" component={ErrorText} />
  
-                                <div style={{marginTop: '2.5em'}}>
-                                <Button
-                                        label='Cadastrar'
-                                        color='#F6F8B0'
-                                        fontColor='#F97F33'
-                                        handleClick={()=>handleClick(values)}
-                                        style={{width: "9em", height: "3.5em", borderRadius: "8px"}}
-                                    />
-                                </div>
-                                </>
-                       
-                        }
-                               
-                             
-                        </>
-                    )}
-                </FormWrapper>
+                        <div style={{marginTop: '2.5em'}}>
+                            <Button
+                                label='Cadastrar'
+                                color='#F6F8B0'
+                                fontColor='#F97F33'
+                                type="submit"
+                                style={{width: "9em", height: "3.5em", borderRadius: "8px"}}
+                            />
+                        </div>     
+                        
+                        </Form>    
+                </Formik>
+                
             </SignUpContainer>
-     
+                {/* Exibe o popup se houver uma mensagem de erro */}
+                {errorMessage && <Popup message={errorMessage} type="error" />}
         </Container>
     )
 }

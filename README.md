@@ -66,7 +66,17 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 | Github - Documentação | **Finalizado**        |
 | Figma - Protótipo | **Finalizado**        |
 | Trello - Início de planejamento | **Finalizado**        |
- 
+
+
+ ###
+###
+## Sprint 2 Backlog:
+| Requisitos        |  Progresso                       |
+|---------------------|---------------------------------|
+| Inserção de dados tabela TACO    | **Finalizado**         |
+| Criação Banco de Dados    | **Finalizado**        |
+| Conexão da página de Login ao Banco de Dados  | **Finalizado**         |
+| Conexão da página de Cadastro ao Banco de Dados  | **Finalizado**         |
  
 
 ###

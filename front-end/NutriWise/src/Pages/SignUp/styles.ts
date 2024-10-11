@@ -89,7 +89,7 @@ export const Text = styled.p`
   font-weight: 600;
   align-items: left;
   position:"relative";
-  margin-right:"5em"
+  margin-right:"5em";
   margin-bottom: 15px;
   margin-top: 15px;
   color: #F6F8B0;

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, ReactNode, useContext, useState } from "react";
 
 interface LogInProviderProps{
@@ -11,10 +12,7 @@ interface UserInterface{
     weight: number;
     height: number;
     email: string; 
-    password: string; 
-    question1:string; 
-    question2: string;
-    question3: string;
+    password: string;
 }
 
 export interface LogInInterface{
@@ -41,27 +39,33 @@ function LogInProvider({children}: LogInProviderProps){
     const [validated, setValidated] = useState<MessageInterface>({} as MessageInterface)
 
 
-    function getUserData({email,password}: LogInInterface){
-        
-        //1. Pega todos os usuario no localStorage
-        const users = JSON.parse(localStorage.getItem('users') || '[]');
-
-        //2. Procura no array de usuarios se a senha e password digitados contem no array usuarios
-        const validatedUser: UserInterface = users.find((user: UserInterface) => {
-            return user.email === email && user.password === password;
-        });
-        console.log('validatedUser: ', validated)
-        //3. Se tiver um usuario com a mesma senha e login, salva as informaçoes na variavel
-        if(validatedUser){
-            console.log('Usuario validado')
-            setUserData(validatedUser);
-            setValidated({loginValidated: true, message: "Login sucesso", type:"success"})
+    async function getUserData({email,password}: LogInInterface){
+        console.log('email,password: ', email,password);
+        try {
+            // Faz a requisição para o back-end com as credenciais de login
+            const response = await axios.post("http://localhost:3000/api/auth/login", {
+              email,
+              password,
+            });
+      
+            // Verifica se a resposta foi bem-sucedida
+            if (response.data) {
             
-        }else{
-            console.log('Usuario nao validado')
-            setValidated({loginValidated: false, message: "Senha ou e-mail incorretos", type:"error"})
+              setUserData(response.data); // Define os dados do usuário retornados pela API
+              setValidated({
+                loginValidated: true,
+                message: "Login sucesso",
+                type: "success",
+              });
+            }
+        } catch (error: any) {
+            // Caso ocorra um erro (como credenciais inválidas)
+            setValidated({
+              loginValidated: false,
+              message: error.response?.data?.message || "Senha ou e-mail incorretos",
+              type: "error",
+            });
         }
-        console.log('loginValidated: ', validated)
         
     }
 

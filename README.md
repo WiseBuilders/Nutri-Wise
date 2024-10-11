@@ -75,6 +75,7 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 |---------------------|---------------------------------|
 | Inserção de dados tabela TACO    | **Finalizado**         |
 | Criação Banco de Dados    | **Finalizado**        |
+| Criação Backend    | **Finalizado**        |
 | Conexão da página de Login ao Banco de Dados  | **Finalizado**         |
 | Conexão da página de Cadastro ao Banco de Dados  | **Finalizado**         |
  

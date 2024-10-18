@@ -1,0 +1,137 @@
+CREATE TABLE IF NOT EXISTS public.atividades
+(
+    id integer NOT NULL,
+    descricao text COLLATE pg_catalog."default",
+    grupo integer,
+    consumo_hora integer,
+    consumo_minuto integer,
+    CONSTRAINT atividades_pkey PRIMARY KEY (id)
+)
+
+
+-- Table: public.grupo
+
+-- DROP TABLE IF EXISTS public.grupo;
+
+CREATE TABLE IF NOT EXISTS public.grupo
+(
+    id integer,
+    tbgrupo character varying(255) COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.grupo
+    OWNER to postgres;
+	
+	
+	-- Table: public.preparacao
+
+-- DROP TABLE IF EXISTS public.preparacao;
+
+CREATE TABLE IF NOT EXISTS public.preparacao
+(
+    id integer,
+    tbpreparacao character varying(255) COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.preparacao
+    OWNER to postgres;
+	
+	
+	-- Table: public.prodprep
+
+-- DROP TABLE IF EXISTS public.prodprep;
+
+CREATE TABLE IF NOT EXISTS public.prodprep
+(
+    id integer NOT NULL,
+    preparacao integer,
+    energia numeric(10,2),
+    proteina numeric(10,2),
+    lipidios numeric(10,2),
+    carboidrato numeric(10,2),
+    fibra numeric(10,2),
+    colesterol numeric(10,2),
+    agsaturado numeric(10,2),
+    agmono numeric(10,2),
+    agpoli numeric(10,2),
+    aglinoleico numeric(10,2),
+    aglinolenico numeric(10,2),
+    agtranstotal numeric(10,2),
+    acucartotal numeric(10,2),
+    acucaradicao numeric(10,2),
+    calcio numeric(10,2),
+    magnesio numeric(10,2),
+    manganes numeric(10,2),
+    fosforo numeric(10,2),
+    ferro numeric(10,2),
+    sodio numeric(10,2),
+    sodioadicao numeric(10,2),
+    potassio numeric(10,2),
+    cobre numeric(10,2),
+    zinco numeric(10,2),
+    selenio numeric(10,2),
+    retinol numeric(10,2),
+    vitamina_a numeric(10,2),
+    tiamina numeric(10,2),
+    riboflavina numeric(10,2),
+    niacina numeric(10,2),
+    niacina_ne numeric(10,2),
+    piridoxina numeric(10,2),
+    cobalamina numeric(10,2),
+    folato numeric(10,2),
+    vitamina_d numeric(10,2),
+    vitamina_e numeric(10,2),
+    vitamina_c numeric(10,2),
+    CONSTRAINT prodprep_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.prodprep
+    OWNER to postgres;
+	
+	
+	-- Table: public.produto
+
+-- DROP TABLE IF EXISTS public.produto;
+
+CREATE TABLE IF NOT EXISTS public.produto
+(
+    id integer NOT NULL,
+    descricao text COLLATE pg_catalog."default",
+    grupo integer,
+    CONSTRAINT produto_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.produto
+    OWNER to postgres;
+	
+	
+	-- Table: public.users
+
+-- DROP TABLE IF EXISTS public.users;
+
+CREATE TABLE IF NOT EXISTS public.users
+(
+    id integer NOT NULL DEFAULT nextval('users_id_seq'::regclass),
+    name character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    birthdate date NOT NULL,
+    gender character varying(10) COLLATE pg_catalog."default" NOT NULL,
+    weight numeric(5,2) NOT NULL,
+    height numeric(5,2) NOT NULL,
+    email character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    password character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT users_pkey PRIMARY KEY (id),
+    CONSTRAINT users_email_key UNIQUE (email)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.users
+    OWNER to postgres;

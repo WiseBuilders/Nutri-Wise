@@ -31,5 +31,7 @@ router.post('/register', async (req: Request, res: Response) => {
       }
     }
 });
+
+router.get('/usuario/:id', (req, res) => userController.pegarUsuarioPorId(req, res));
   
 export default router;

@@ -2,7 +2,6 @@ import express from 'express';
 import userRoutes from './routes/userRoutes';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes';
-import gruposRoutes from './routes/gruposRoutes';
 import produtosRoutes from './routes/produtosRoutes';
 import refeicoesRoutes from './routes/refeicoesRoutes';
 
@@ -25,9 +24,6 @@ app.use('/api/users', userRoutes);
 
 // Rota para login de usuário
 app.use('/api/auth', authRoutes);
-
-// Rota para grupos
-app.use('/api/grupos', gruposRoutes);
 
 // Rota para grupos
 app.use('/api/produtos', produtosRoutes);

@@ -1,12 +1,6 @@
 import { Request, Response } from 'express';
 import { Pool } from 'pg';
 
-// Interface para o tipo de Refeição
-interface Refeicao {
-    id: number;
-    nome: string;
-}
-
 export class RefeicaoController {
     private pool: Pool;
 
@@ -86,11 +80,6 @@ export class RefeicaoController {
         }
     }
 
-    
-    ////////////////////////////////////////////////////////////////
-    //////////////////////TESTE////////////////////////////////////
-    //////////////////////////////////////////////////////////////
-
     public async registrarRefeicao(req: Request, res: Response): Promise<void> {
         const { usuario_id, data, tipo_refeicao, alimentos } = req.body;
     
@@ -150,9 +139,7 @@ export class RefeicaoController {
 
     public async consultarRefeicaoPorData(req: Request, res: Response): Promise<void> {
         const { usuario_id, data } = req.query;
-        console.log('req.query: ', req.query)
-
-    
+       
         try {
             // Consulta as refeições do usuário para a data
             const result = await this.pool.query(
@@ -167,7 +154,6 @@ export class RefeicaoController {
                 ORDER BY r.tipo_refeicao`,
                 [usuario_id, data]
             );
-            //console.log('result: ', result);
     
             // Organiza o resultado em um JSON estruturado
             const refeicoes: any = {};

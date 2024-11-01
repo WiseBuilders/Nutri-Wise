@@ -15,14 +15,14 @@ import { Container,
 import Popup from "../../components/popup/Index";
 import Button from '../../components/button/Index';
 import {useSignIn } from '../../context/SignInContext';
-import { useEffect, useState } from 'react';
- 
- 
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+  
 const SignUp = ()=>{
-    const {getSignInData} = useSignIn();
-    const [errorMessage, setErrorMessage] = useState<string | null>(null); // Estado para capturar erro
-    const [showPopup, setShowPopup] = useState(false); // Estado para controlar a visibilidade do popup
-    
+    const navigate = useNavigate();
+
+    const {getSignInData, sigInError, createUserSuccess} = useSignIn();
+
     const validationSchema = Yup.object({
         name: Yup.string()
             .required('O nome é obrigatório'),
@@ -30,7 +30,7 @@ const SignUp = ()=>{
           .matches(/^\d{2}\/\d{2}\/\d{4}$/, 'Data de nascimento deve estar no formato DD/MM/AAAA')
           .required('A data de nascimento é obrigatória'),
         gender: Yup.string()
-            .required('O sexo é obrigatório'),
+            .required('O sexo sigInErroré obrigatório'),
         weight: Yup.number()
             .typeError('Peso deve ser em número')
             .required('O peso é obrigatório'),
@@ -45,35 +45,16 @@ const SignUp = ()=>{
             .required('A senha é obrigatória'),
     });
 
-    const handleSubmit = async (values: any) => {
-        try {
-            await getSignInData(values);
-            setErrorMessage(null); // Limpa a mensagem de erro se bem-sucedido
-            setShowPopup(false); // Fecha o popup se o cadastro for bem-sucedido
-        } catch (error: any) {
-            console.log("Erro capturado:", error); // Verificando o erro
-            // Captura a mensagem de erro e exibe no popup
-            setErrorMessage(error.response?.data?.message || 'Erro ao tentar cadastrar. Tente novamente.');
-            console.log("Setando showPopup para true"); // Log para verificar se isso está sendo chamado
-            setShowPopup(true); // Mostra o popup ao capturar o erro
-        }
+    const handleSubmit = (values: any) => {
+        getSignInData(values);
+        
     };
 
-    useEffect(() => {
-        console.log("useEffect chamado com showPopup:", showPopup); // Verifica se o useEffect está sendo chamado
-        if (showPopup) {
-            // O popup desaparece após 3 segundos
-            const timer = setTimeout(() => {
-                console.log("Fechando popup após 3 segundos");
-                setShowPopup(false);
-                setErrorMessage(null); // Limpa a mensagem de erro após ocultar o popup
-            }, 3000);
+    useEffect(()=>{
+        createUserSuccess && navigate('/logIn');
+        
+    },[createUserSuccess])
 
-            // Limpa o timeout ao desmontar o componente ou quando o popup fecha
-            return () => clearTimeout(timer);
-        }
-    }, [showPopup]); // Monitora mudanças apenas em showPopup
- 
     return(
         <Container>
             <SignUpContainer>
@@ -153,7 +134,7 @@ const SignUp = ()=>{
                 
             </SignUpContainer>
                 {/* Exibe o popup se houver uma mensagem de erro */}
-                {errorMessage && <Popup message={errorMessage} type="error" />}
+                {sigInError && <Popup message='Erro ao criar usuário.' type="error" />}
         </Container>
     )
 }

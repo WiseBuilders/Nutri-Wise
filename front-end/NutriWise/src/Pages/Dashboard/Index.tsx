@@ -6,7 +6,7 @@ import foto from "../../assets/foto.svg";
 const Dashboard = ()=>{
     const {userData} = useLogIn();
     const {email,gender,height,name,weight} = userData;
-    console.log('USERDATA: ', userData)
+
     return(
         <>
             <HeaderContainer>

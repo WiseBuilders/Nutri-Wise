@@ -17,7 +17,8 @@ export interface SignInData{
 }
 
 interface ISignInContextData{
-    sigInDataStatus: boolean;
+    sigInError: boolean;
+    createUserSuccess: boolean
     getSignInData: ({birthdate,email,gender,height,name,password,weight}: SignInData) => void;
 }
 
@@ -26,7 +27,8 @@ const SignInContext = createContext({} as ISignInContextData);
 
 function SignInProvider({children}: SignInProviderProps){
 
-    const[sigInDataStatus, setSigInDataStatus] = useState<boolean>(false);
+    const[sigInError, setSigInerror] = useState<boolean>(false);
+    const[createUserSuccess, setCreateUserSuccess] = useState<boolean>(false);
 
     async function getSignInData({birthdate,email,gender,height,name,password,weight}:SignInData ){
         const userData = {
@@ -38,6 +40,9 @@ function SignInProvider({children}: SignInProviderProps){
             password,
             weight,
         }
+        
+        setSigInerror(false);
+        setCreateUserSuccess(false)
 
         try {
             // Faz a requisição para o backend para criar um novo usuário
@@ -45,24 +50,28 @@ function SignInProvider({children}: SignInProviderProps){
       
             // Se o usuário for criado com sucesso, atualize o estado
             if (response.status === 201) {
-              setSigInDataStatus(true);
+              setSigInerror(false);
+              setCreateUserSuccess(true)
               console.log("Usuário criado com sucesso!");
             }
           } catch (error: any) {
             // Verifica se o erro é relacionado ao email já cadastrado
             if (error.response && error.response.status === 400) {
-              setSigInDataStatus(false);
+              setSigInerror(true);
+              setCreateUserSuccess(false)
               console.log("Erro: ", error.response.data.message); // Mensagem de erro vinda do backend
             } else {
-              setSigInDataStatus(false);
+              setSigInerror(true);
+              setCreateUserSuccess(false)
               console.error("Erro ao criar usuário: ", error.message);
             }
         }
+
              
     }
     
     return(
-        <SignInContext.Provider value={{sigInDataStatus, getSignInData}}>
+        <SignInContext.Provider value={{createUserSuccess, sigInError, getSignInData}}>
             {children}
         </SignInContext.Provider>
     );

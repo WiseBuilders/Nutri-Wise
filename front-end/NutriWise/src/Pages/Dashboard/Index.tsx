@@ -1,34 +1,22 @@
 import { useLogIn } from "../../context/LogInContext";
-import { Img } from "../LogIn/styles";
-import { ButtonsContainer, DashboardButton, HeaderContainer, NameUserText, OptionsContainer, Text } from "./styles";
-import logo from "../../assets/logo.png";
-import foto from "../../assets/foto.svg";
+import { ButtonsContainer, DashboardButton, OptionsContainer,} from "./styles";
+
+import Header from "../../components/header/Index";
+import { useNavigate } from "react-router-dom";
 const Dashboard = ()=>{
     const {userData} = useLogIn();
-    const {email,gender,height,name,weight} = userData;
-
+    const {weight,email,gender,height,name} = userData;
+    const navigate = useNavigate();
     return(
         <>
-            <HeaderContainer>
-                <Img src={foto}/>
-                <div>
-                    <NameUserText>{name}</NameUserText>
-                    <Text>Nome Completo: {name}</Text>
-                    <Text>E-mail: {email}</Text>
-                    <Text>Sexo: {gender}</Text>
-                </div>
-                <div>
-                    <Text>Altura: {height}m</Text>
-                    <Text>Peso: {weight}kg</Text> 
-                </div> 
-                <Img src={logo}/>
-            </HeaderContainer>
+            <Header email={email} gender={gender} height={height} name={name} weight={weight}/>
             <OptionsContainer>
                 <ButtonsContainer>
                     <DashboardButton
                         color="#0EC320"
                         fontColor="#FFFF"
                         label="Meu Peso"
+                        onClick={()=>navigate('/meuPeso')}
                     />
                     <DashboardButton
                         color="#0EC320"

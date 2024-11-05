@@ -3,6 +3,7 @@ import Routes from '../src/routes/routes';
 import GlobalStyles from './styles/GlobalStyles';
 import { SignInProvider } from './context/SignInContext';
 import { LogInProvider } from './context/LogInContext';
+import { PesoProvider } from './context/PesoContext';
 
 function App() {
 
@@ -12,9 +13,11 @@ function App() {
       <GlobalStyles/>
       <SignInProvider>
         <LogInProvider>
-          <Router >
-            <Routes />
-          </Router>
+          <PesoProvider>
+            <Router >
+              <Routes />
+            </Router>
+          </PesoProvider>
         </LogInProvider>
       </SignInProvider>
     </>

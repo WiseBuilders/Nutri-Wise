@@ -3,6 +3,8 @@ import Main from '../Pages/Main/Index';
 import SignUp from '../Pages/SignUp/Index';
 import LogIn from '../Pages/LogIn/Index';
 import Dashboard from '../Pages/Dashboard/Index';
+import MeuPeso from '../Pages/MeuPeso/Index';
+
 
 const Routes = () => {
   return (
@@ -11,6 +13,7 @@ const Routes = () => {
         <Route path="/singup" element={<SignUp />} />
         <Route path="/logIn" element={<LogIn />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/meuPeso" element={<MeuPeso />} />
     </Switch>
   );
 }

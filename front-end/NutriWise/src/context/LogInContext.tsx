@@ -6,6 +6,7 @@ interface LogInProviderProps{
 }
 
 interface UserInterface{
+    id: number;
     name: string; 
     birthdate: string;
     gender: string;
@@ -40,7 +41,6 @@ function LogInProvider({children}: LogInProviderProps){
 
 
     async function getUserData({email,password}: LogInInterface){
-        console.log('email,password: ', email,password);
         try {
             // Faz a requisição para o back-end com as credenciais de login
             const response = await axios.post("http://localhost:3000/api/auth/login", {

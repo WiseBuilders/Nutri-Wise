@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes';
 import produtosRoutes from './routes/produtosRoutes';
 import refeicoesRoutes from './routes/refeicoesRoutes';
+import historicoPesoRoutes from './routes/historicoPesoRoutes';
 
 import cors from 'cors';  // Importe o pacote cors
 
@@ -30,6 +31,9 @@ app.use('/api/produtos', produtosRoutes);
 
 // Rota para refeições
 app.use('/api/refeicoes', refeicoesRoutes);
+
+// Rota para historico de peso
+app.use('/api/historicoPeso', historicoPesoRoutes);
 
 
 // Porta onde o servidor vai rodar

@@ -18,20 +18,21 @@ const Dashboard = ()=>{
                         label="Meu Peso"
                         onClick={()=>navigate('/meuPeso')}
                     />
+                    
+                    {/*<DashboardButton
+                        color="#0EC320"
+                        fontColor="#FFFF"
+                        label="Consequências"
+                    />*/}
+                </ButtonsContainer>
+                <ButtonsContainer>
                     <DashboardButton
                         color="#0EC320"
                         fontColor="#FFFF"
                         label="Refeições e Calorias"
                         onClick={()=>navigate('/registroCalorias')}
                     />
-                    <DashboardButton
-                        color="#0EC320"
-                        fontColor="#FFFF"
-                        label="Consequências"
-                    />
-                </ButtonsContainer>
-                <ButtonsContainer>
-                    <DashboardButton
+                    {/*<DashboardButton
                         color="#0EC320"
                         fontColor="#FFFF"
                         label="Cálculo IMC"
@@ -45,7 +46,7 @@ const Dashboard = ()=>{
                         color="#0EC320"
                         fontColor="#FFFF"
                         label="Histórico de Consumo"
-                    />
+                    />*/}
                 </ButtonsContainer>
                 
             </OptionsContainer>

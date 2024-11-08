@@ -103,6 +103,7 @@ export class ProdutosController {
      public async buscarProdutoPorNome(req: Request, res: Response): Promise<Response> {
         const { nome } = req.params;
 
+        //Matematica Computacional - Teoria de Conjuntos Aplicada a Bancos de Dados
         try {
             const query = `
                 SELECT 

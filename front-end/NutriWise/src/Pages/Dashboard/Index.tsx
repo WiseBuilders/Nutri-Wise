@@ -22,6 +22,7 @@ const Dashboard = ()=>{
                         color="#0EC320"
                         fontColor="#FFFF"
                         label="Refeições e Calorias"
+                        onClick={()=>navigate('/registroCalorias')}
                     />
                     <DashboardButton
                         color="#0EC320"

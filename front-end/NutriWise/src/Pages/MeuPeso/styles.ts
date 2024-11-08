@@ -53,8 +53,8 @@ export const FormContainer = styled.div`
 `;
 
 export const Text = styled.p`
-margin-bottom: 10px;
-font-size: 40px;
+  margin-bottom: 10px;
+  font-size: 40px;
   text-align: center;
   color: #068713;
   font-family: 'Inter', sans-serif;

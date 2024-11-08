@@ -39,6 +39,7 @@ export class RefeicaoController {
         const { usuario_id, data_inicio, data_fim } = req.body;
 
 
+    //Matematica Computacional - Funções Matemáticas Algébricas e suas Aplicações
     try {
         const result = await this.pool.query(
             `SELECT rc.data, r.descricao AS nome_refeicao,
@@ -97,7 +98,6 @@ export class RefeicaoController {
             // Processa cada alimento e insere detalhes
             for (const alimento of alimentos) {
                 const { produto_id, quantidade } = alimento;
-    
                 // Consulta valores nutricionais do produto
                 const result = await this.pool.query(
                     `SELECT 
@@ -112,7 +112,6 @@ export class RefeicaoController {
                     [quantidade, produto_id]
 
                 );
-    
                 const valoresNutricionais = result.rows[0];
                 totalCalorias += valoresNutricionais.calorias;
     

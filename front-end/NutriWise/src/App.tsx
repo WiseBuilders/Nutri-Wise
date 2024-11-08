@@ -4,6 +4,7 @@ import GlobalStyles from './styles/GlobalStyles';
 import { SignInProvider } from './context/SignInContext';
 import { LogInProvider } from './context/LogInContext';
 import { PesoProvider } from './context/PesoContext';
+import { AlimentosProvider } from './context/AlimentosContext';
 
 function App() {
 
@@ -14,9 +15,11 @@ function App() {
       <SignInProvider>
         <LogInProvider>
           <PesoProvider>
+            <AlimentosProvider>
             <Router >
               <Routes />
             </Router>
+            </AlimentosProvider>
           </PesoProvider>
         </LogInProvider>
       </SignInProvider>

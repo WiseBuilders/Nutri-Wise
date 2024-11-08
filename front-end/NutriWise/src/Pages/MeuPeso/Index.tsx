@@ -100,16 +100,16 @@ const MeuPeso = () => {
                 </Formik>
             
             <ChartContainer>
-                    <ResponsiveContainer width="100%" height="100%">
-                        <LineChart data={pesoHistorico}>
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="data" />
-                            <YAxis />
-                            <Tooltip />
-                            <Line type="monotone" dataKey="peso" stroke="#8884d8" strokeWidth={2} dot={{ r: 5 }} />
-                        </LineChart>
-                    </ResponsiveContainer>
-                </ChartContainer>
+                <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={pesoHistorico}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="data" />
+                        <YAxis />
+                        <Tooltip />
+                        <Line type="monotone" dataKey="peso" stroke="#8884d8" strokeWidth={2} dot={{ r: 5 }} />
+                    </LineChart>
+                </ResponsiveContainer>
+            </ChartContainer>
 
         </Container>
     </>

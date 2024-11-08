@@ -13,7 +13,6 @@ interface PesoInfoInterface{
 
 interface IPesoHistoricoContextData{
     pesoHistorico: PesoInfoInterface[];
-    //getPesoHistorico: () => void;
     postPeso: ({peso,metaAlcancar}: PesoInfoInterface) => void
     PegarHistorico: (usuario_id: number) => void;
 }

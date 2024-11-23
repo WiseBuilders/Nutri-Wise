@@ -18,7 +18,7 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 - **Scrum Master:** Luana Pinheiro https://github.com/Luana873
 - **Product Owner:** Junior Signorini https://github.com/JorgeJuniorSignorini
 - **Desenvolvedor:** Edlaine Souza https://github.com/edlaine-souza
-- **Desenvolvedor:** Luiz Fernando 
+- **Desenvolvedor:** Luiz Fernando https://github.com/Luizfsn26
 - **Desenvolvedor:** Nicolas Henrique https://github.com/NICOLAShsdo
 - **Desenvolvedor:** Rodrigo Augusto https://github.com/rodrigoaslima
  

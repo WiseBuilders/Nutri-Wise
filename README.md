@@ -109,6 +109,6 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 ## Gráfico de Burndown:
 ## Sprint 3
 <p align="center">
-<img src="imagens/burndown2_image.png" width="1000">
+<img src="imagens/burndown3_.png" width="1000">
 </p>
 

@@ -78,7 +78,16 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 | Criação Backend    | **Finalizado**        |
 | Conexão da página de Login ao Banco de Dados  | **Finalizado**         |
 | Conexão da página de Cadastro ao Banco de Dados  | **Finalizado**         |
- 
+
+###
+###
+## Sprint 3 Backlog:
+| Requisitos        |  Progresso                       |
+|---------------------|---------------------------------|
+| Tela Registro de Calorias    | **Finalizado**         |
+| Telas de Controle de Peso    | **Finalizado**        |
+| Tela Pesquisa de Alimentos | **Finalizado**         |
+| Gráfico Tela de Controle de Peso | **Finalizado**         |
 
 ###
 ###

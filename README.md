@@ -19,7 +19,7 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 - **Product Owner:** Junior Signorini
 - **Desenvolvedor:** Edlaine Souza
 - **Desenvolvedor:** Luiz Fernando
-- **Desenvolvedor:** Nicolas Henrique
+- **Desenvolvedor:** Nicolas Henrique : https://github.com/NICOLAShsdo
 - **Desenvolvedor:** Rodrigo Augusto
  
 ### Tecnologias Utilizadas

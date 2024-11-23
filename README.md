@@ -15,12 +15,12 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 - Página Informativa sobre os riscos de não balancear a quantidade de nutrientes nas refeições e suas consequências.
   
 ### Equipe WiseBuilders
-- **Scrum Master:** Luana Pinheiro 
-- **Product Owner:** Junior Signorini
-- **Desenvolvedor:** Edlaine Souza
-- **Desenvolvedor:** Luiz Fernando
-- **Desenvolvedor:** Nicolas Henrique : https://github.com/NICOLAShsdo
-- **Desenvolvedor:** Rodrigo Augusto
+- **Scrum Master:** Luana Pinheiro https://github.com/Luana873
+- **Product Owner:** Junior Signorini https://github.com/JorgeJuniorSignorini
+- **Desenvolvedor:** Edlaine Souza https://github.com/edlaine-souza
+- **Desenvolvedor:** Luiz Fernando 
+- **Desenvolvedor:** Nicolas Henrique https://github.com/NICOLAShsdo
+- **Desenvolvedor:** Rodrigo Augusto https://github.com/rodrigoaslima
  
 ### Tecnologias Utilizadas
 - **Prototipagem de telas:** (Figma) https://www.figma.com/design/Qtldmop778ivbphTyNhUqA/NutriWise-Interface?node-id=16-2&t=24rc7vbPM5bGp5C6-1

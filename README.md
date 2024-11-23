@@ -28,7 +28,7 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 - **Backend:** Node.js, Express
 - **Banco de Dados:** Postgres
 - **Controle de Versão:** GitHub
-- **Controle de Atividades e Funções:** Trello
+- **Controle de Atividades e Funções:** Trello : https://trello.com/invite/6503773d674a729dd8be5e78/ATTI81c21e97e3b9107b3078e3b91580ca7b69ABCE3B
  
 ##  Backlog do Produto
 | User Stories      |
@@ -95,3 +95,11 @@ Além do controle de nutrientes, a Nutriwise possibilita ao usuário:
 <p align="center">
 <img src="imagens/burndown2_image.png" width="1000">
 </p>
+
+###
+## Gráfico de Burndown:
+## Sprint 3
+<p align="center">
+<img src="imagens/burndown2_image.png" width="1000">
+</p>
+
